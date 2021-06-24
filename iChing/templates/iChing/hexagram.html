@@ -6,7 +6,7 @@
         toLeaves()
         let number = "{{number}}"
         let fortune = document.querySelector("#fortune")
-        document.querySelector("#hexdiv").appendChild(await drawHex(number))
+        document.querySelector("#hexdiv").appendChild(await drawHex(number, false))
 
         showFortune(number, true)
     })

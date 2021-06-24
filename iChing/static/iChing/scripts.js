@@ -147,11 +147,10 @@ function toFortune() {
 
     // Set response form to activate when user sees bottom of page
     document.querySelector("#response").style.display = "flex"
-    // window.onscroll = () => {
-    //     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-    //         document.querySelector("#response").style.display = "flex"
-    //     }
-    // }
+
+    document.querySelector("#showq").style.display = "flex"
+    document.querySelector("#underline").style.display = "flex"
+    document.querySelector("#showq").innerHTML = document.querySelector("#question").value
 }
 
 function getDigits() {
@@ -215,16 +214,23 @@ async function loadHex(digits) {
     return hexagram
 }
 
-async function drawHex(num) {
-    // takes 6 digit codes and numbers 1-64. 
-    // returns DOM object representing a hexstack
-    // if 6 digit code provided, will highlight strong rows
+async function drawHex(num, mode) {
+    // if mode=false --> get hex object from database
+    //      takes 6 digit codes and numbers 1-64. 
+    //      returns DOM object representing a hexstack
+    //      if 6 digit code provided, will highlight strong rows
 
-    let hexagram = await loadHex(num)
+    // if mode=true --> draw hex with 6-digit binary num
+    if (mode) {
+        var hexagram = {"digits": num}
+    } else {
+        var hexagram = await loadHex(num)
+    }
+
     let square = document.createElement('div')
     square.classList.add('square')
     
-    if (num.length == 6) {
+    if ( !mode & num.length == 6) {
         var digits = num
     } else {
         var digits = "xxxxxx"
@@ -262,9 +268,16 @@ async function drawHex(num) {
             square.append(row)
         }
     }
-    let url = "{{ url 'hexagram' }}"
+
     square.onclick= () => { location.href = `/hexagram/${num}`}
     return square
+}
+
+async function getAllNums() {
+    // Returns dictionary of all hexagram {number: digits}
+    let allNums = await fetch(`/getHex?digits=allnum`)
+    .then(response => response.json())
+    return allNums
 }
 
 async function record() {
@@ -294,7 +307,7 @@ async function loadRecords(page) {
         let left = document.createElement('div')
         let right = document.createElement('div')
         let fortune = document.createElement('div')
-        let image = await drawHex(record["digits"])
+        let image = await drawHex(record["digits"], false)
         
 
         fortune.innerHTML = record["query"]

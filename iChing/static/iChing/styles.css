@@ -180,6 +180,14 @@ body {
     left: 3%;
 }
 
+#showq {
+    color: goldenrod;
+    display: none;
+    justify-content: center;
+    font-weight: bold;
+    background: #101011;
+}
+
 td {
     height: 10px;
 }

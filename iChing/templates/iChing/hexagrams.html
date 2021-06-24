@@ -6,10 +6,15 @@
 document.addEventListener("DOMContentLoaded", async function() {
     toLeaves()
     let hex = document.querySelector("#hexagrams")
-    let i = 1
-    while (i <= 64) {
-        hex.append(await drawHex(i))
-        i++
+    // let i = 1
+    // while (i <= 64) {
+    //     hex.append(await drawHex(i))
+    //     i++
+    // }
+    let d = await getAllNums()
+    for (var key in d) {
+        var digits  = d[key]
+        hex.append(await drawHex(digits, true))
     }
 })
 </script>

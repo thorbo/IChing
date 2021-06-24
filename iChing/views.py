@@ -17,7 +17,12 @@ def index(request):
 
 def getHex(request):
     code = request.GET.get("digits")
-    if len(code) == 6:
+    if code == "allnum":
+        allnums = Hexagram.objects.all().order_by("number")
+        # allnums = [ x.serialize() for x in allnums]
+        allnums = { x.number: x.digits for x in allnums}
+        return JsonResponse(allnums, safe=False)
+    elif len(code) == 6:
         code = "".join(['0' if digit in ['0', '1'] else '1' for digit in code])
         hexagram = Hexagram.objects.get(digits=code).serialize()
     else:
