@@ -1,0 +1,104 @@
+{% extends 'iChing/layout.html' %}
+{% block title %}
+
+{% endblock %}
+{% block script %}
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        toLeaves() 
+
+        document.querySelector("#qSubmit").onclick = () => {
+            if ( document.querySelector("#question").value.length > 0) {
+                toCoins()
+                return false
+            } else {
+                return false
+            }
+        }
+
+        document.querySelector("#flip").onclick = () => {
+            coinFlip()
+        }
+
+        document.querySelector("#respond").onclick = () => {
+            setResponse()
+            return false
+        }
+    })
+
+</script>
+{% endblock %}
+{% block body %}
+
+    <form id="qform" class="centered">
+        <input name="question" id="question" autocomplete="off" type="text" placeholder="Ask your question, mortal." style="width: 30%">
+        <input id="qSubmit" class="btn btn-danger" type="submit" value="Consult">
+    </form>
+
+    <div id="coins" class="coins">
+        <div id="coin1" data-value=0>
+        </div>
+        <div id="coin2" data-value=0>
+        </div>
+        <div id="coin3" data-value=0>
+        </div>
+    </div>
+
+    <button class="btn btn-danger centered" id="flip">Toss Coins</button>
+
+    <form id="response">
+        <h6 class="red">Relevance to your question:</h6>
+        <div style="display: flex;width: 40%; justify-content: space-around; align-items: center">
+            <div >
+                <label for="rel1">1 Nonsense</label>
+                <input type="radio" id="rel1" name="relevance" value=1 required>
+            </div>
+            <div >
+                <input type="radio" id="rel2" name="relevance" value=2>
+                <label for="rel2">2 </label>
+            </div>
+            <div >
+                <input type="radio" id="rel3" name="relevance" value=3>
+                <label for="rel3">3 </label>
+            </div>
+            <div >
+                <input type="radio" id="rel4" name="relevance" value=4>
+                <label for="rel4">4 </label>
+            </div>
+            <div >
+                <input type="radio" id="rel5" name="relevance" value=5>
+                <label for="rel5">5 Uncanny</label>
+            </div>
+        </div>
+        <div style="display: flex;">
+            <textarea name="comments" id="comments" maxlength="800" rows="3" cols="50" placeholder="Any specific details or comments to note?"></textarea>
+            <input type="submit" id="respond" class="btn btn-danger">
+        </div>
+        
+        
+    </form>
+
+    <table id="hexstack" data-value=0>
+        <tr>
+            <td id="hex5"></td>
+        </tr>
+        <tr>
+            <td id="hex4"></td>
+        </tr>
+        <tr>
+            <td id="hex3"></td>
+        </tr>
+        <tr>
+            <td>  </td>
+        </tr>
+        <tr>
+            <td id="hex2"></td>
+        </tr>
+        <tr>
+            <td id="hex1"></td>
+        </tr>
+        <tr>
+            <td id="hex0"></td>
+        </tr>
+    </table>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'iChing/layout.html' %}
+
+{% block script %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+    })
+</script>
+{% endblock %}
+{% block body %}
+
+<div id="about">
+    <h3>Background</h3>
+        <p> The <a href="https://www.wikiwand.com/en/I_Ching">I Ching</a> , the Book of Changes, is an ancient Chinese text with a rich history. 
+        It is tradationally used as an interpretive manual to accompany a divination process. The process always involves the translation of some real world interaction, 
+        using say yarrow stalks or coins, being converted to broken or solid lines. These lines then build up to form a set of lines with 6 lines being referred to as a hexagram. 
+        The hexagram has its own meaning, passed through the I Ching, but for those interested, additional information about the metaphorical significance of each hexagram 
+        can be gained by an understanding of its component Trigrams, of the <a href="https://www.wikiwand.com/en/Bagua">Eight Trigrams,</a> and their internal interactions. </p>
+        <p>The I Ching has captured the hearts and minds of many throughout history as a "foundational text for Confucian and Daoist philosophical traditions". More recently, it sparked mathematic and philosophical discussion leading to the creation of modern binary number system.</p>
+    <h3>How to use this site</h3>
+    <p>This site makes aims to make the I Ching accessible and easy to use. Here are the steps: 
+        <ol>
+            <li>Go to homepage (Click "I Ching" in the navbar)</li>
+            <li>Type in your question to receive divination, and click "Consult"</li>
+            <li>Toss the coins 6 times using the "Toss" button</li>
+            <ul>
+                <li>Each toss will build a solid or broken line in your hexagram</li>
+                <li>The line will be emphasized if the toss was all heads or all tails</li>
+                <li>Your responding hexagram will be complete in the bottom left after 6 coin tosses</li>
+            </ul>
+            <li>Explore the response corresponding to your hexagram</li>
+            <li ><span class="red">Provide feedback! </span>Was the response applicable to your question? Did it help you see things in a new way?</li>
+        </ol>
+    </p>
+    <p>Additionally, all 64 hexagrams are available to browse. As are records of past consultations. </p>
+    <h3>Learn More</h3>
+    <p>Credit goes to <a href="https://www.amazon.com/Ching-Book-Changes-Bollingen-General-ebook/dp/B004S6QSYO/ref=sr_1_2?dchild=1&keywords=kindle+book+i+ching&qid=1624548570&sr=8-2">"The I Ching or Book of Changes" </a> by Hellmut Wilhelm, C.G. Jung, Richard Willhelm, and Cary F Baynes. Pick up a copy of their translation and commentary to learn much more than what is available here!</p>
+</div>
+{% endblock %}

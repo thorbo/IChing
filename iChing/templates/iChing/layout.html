@@ -1,0 +1,96 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> I Ching </title> 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
+        <link rel="stylesheet" href="{% static 'iChing/styles.css' %}">
+        <script src="{% static 'iChing/scripts.js' %}"></script>
+        {% block script %} {% endblock %}
+
+    </head>
+    <body>
+        <nav class="navbar navbar-dark navbar-expand-lg" "> 
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="{% static 'iChing/I_Ching_symbols.png' %}"  width="50" height="90">
+                    I Ching</a>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav ml-auto" >
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/hexagrams">Hexagrams</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/records">Records</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          </nav>
+
+        <div id="fortune" class="centered">
+            <div>
+                <h3 id="name"></h3>
+            </div>
+            <div>
+                <h3 id="overview_title"></h3> 
+                <p id="overview"></p>
+            </div>
+            <div>
+                <h3 id="sequence_title"></h3>
+                <p id="sequence"></p>
+                <p id="note"></p>
+            </div>
+            <div>
+                <h3 id="judge_title"></h3>
+                <p id="judge_poem" class="poem"></p>
+                <p id="judge"></p>
+            </div>
+            <div>
+                <h3 id="image_title"></h3>
+                <p id="image_poem" class="poem"></p>
+                <p id="image"></p>
+            </div>
+            <div>
+                <h4 id="emph1_title"></h4>
+                <p id="emph1_poem" class="poem"></p>
+                <p id="emph1"></p>
+            </div>
+            <div>
+                <h4 id="emph2_title"></h4>
+                <p id="emph2_poem" class="poem"></p>
+                <p id="emph2"></p>
+            </div>
+            <div>
+                <h4 id="emph3_title"></h4>
+                <p id="emph3_poem" class="poem"></p>
+                <p id="emph3"></p>
+            </div>
+            <div>
+                <h4 id="emph4_title"></h4>
+                <p id="emph4_poem" class="poem"></p>
+                <p id="emph4"></p>
+            </div>
+            <div>
+                <h4 id="emph5_title"></h4>
+                <p id="emph5_poem" class="poem"></p>
+                <p id="emph5"></p>
+            </div>
+            <div>
+                <h4 id="emph6_title"></h4>
+                <p id="emph6_poem" class="poem"></p>
+                <p id="emph6"></p>
+            </div>
+            <div>
+                <h4 id="emphall_title"></h4>
+                <p id="emphall_poem" class="poem"></p>
+                <p id="emphall"></p>
+            </div>
+        </div>
+        {% block body %} {% endblock %} 
+    </body>
+</html>

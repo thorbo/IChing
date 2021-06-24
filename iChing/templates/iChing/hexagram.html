@@ -1,0 +1,19 @@
+{% extends 'iChing/layout.html' %}
+
+{% block script %}
+<script>
+    document.addEventListener("DOMContentLoaded", async function() {
+        toLeaves()
+        let number = "{{number}}"
+        let fortune = document.querySelector("#fortune")
+        document.querySelector("#hexdiv").appendChild(await drawHex(number))
+
+        showFortune(number, true)
+    })
+</script>
+{% endblock %}
+{% block body %}
+
+<div id="hexdiv"></div>
+
+{% endblock %}

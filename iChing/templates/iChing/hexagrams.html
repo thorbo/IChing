@@ -1,0 +1,21 @@
+{% extends 'iChing/layout.html' %}
+
+
+{% block script %}
+<script>
+document.addEventListener("DOMContentLoaded", async function() {
+    toLeaves()
+    let hex = document.querySelector("#hexagrams")
+    let i = 1
+    while (i <= 64) {
+        hex.append(await drawHex(i))
+        i++
+    }
+})
+</script>
+
+{% endblock %}
+
+{% block body %}
+<div id="hexagrams"></div>
+{% endblock %}

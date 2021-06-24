@@ -1,0 +1,28 @@
+{% extends 'iChing/layout.html' %}
+
+{% block script %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector('#next').onclick = () => {
+            changePage("next")
+        }
+
+        document.querySelector('#previous').onclick = () => {
+            changePage("prev")
+        }
+        
+        toLeaves()
+        loadRecords(1)
+
+    })
+</script>
+{% endblock %}
+{% block body %}
+
+<div id="records"></div>
+<div id="pages">
+    <button id="previous" class="btn btn-danger">Prev</button>
+    <button id="page" class="btn btn-dark">1</button>
+    <button id="next" class="btn btn-danger">Next</button>
+</div>
+{% endblock %}
