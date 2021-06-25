@@ -274,8 +274,13 @@ async function drawHex(num, mode) {
             square.append(row)
         }
     }
-
-    square.onclick= () => { location.href = `/hexagram/${num}`}
+    if (mode) {
+        square.onclick= () => { location.href = `/hexagram/${mode}`}
+        
+    } else {
+        square.onclick= () => { location.href = `/hexagram/${num}`}
+    }
+    
     return square
 }
 

@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     let d = await getAllNums()
     for (var key in d) {
         var digits  = d[key]
-        hex.append(await drawHex(digits, true))
+        hex.append(await drawHex(digits, key))
     }
 })
 </script>
