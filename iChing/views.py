@@ -19,7 +19,6 @@ def getHex(request):
     code = request.GET.get("digits")
     if code == "allnum":
         allnums = Hexagram.objects.all().order_by("number")
-        # allnums = [ x.serialize() for x in allnums]
         allnums = { x.number: x.digits for x in allnums}
         return JsonResponse(allnums, safe=False)
     elif len(code) == 6:
@@ -34,10 +33,6 @@ def hexagrams(request):
     return render(request, 'iChing/hexagrams.html')
 
 def hexagram(request, number):
-    # if len(digits) == 6:
-    #     hex = Hexagram.objects.get(digits=digits).serialize()
-    # else:
-    #     hex = Hexagram.objects.get(number=int(digits)).serialize()
     return render(request, "iChing/hexagram.html", {
         "number": number
     })
@@ -75,12 +70,9 @@ def record(request):
         page = int(request.GET.get("page") or 1)
         displayLimit = 5       # Number of records to show per page
         getrecords = Fortune.objects.order_by("-timestamp")
-        print(getrecords)
         getrecords = Paginator(getrecords, displayLimit)
         getrecords = getrecords.page(page)
-        print(getrecords.object_list)
         recordsResponse = [r.serialize() for r in getrecords]
-        print(recordsResponse)
         return JsonResponse(recordsResponse, safe=False)
     else:
         return HttpResponse(status=400)

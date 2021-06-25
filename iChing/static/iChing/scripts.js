@@ -170,9 +170,15 @@ async function showFortune(digits, showall) {
     document.querySelector("#name").innerHTML = hexagram["name"]
     document.querySelector("#overview").innerHTML = hexagram["overview"]
     document.querySelector("#overview_title").innerHTML = "Overview"
-    document.querySelector("#sequence").innerHTML = hexagram["sequence"]
-    document.querySelector("#sequence_title").innerHTML = "Sequence"
-    document.querySelector("#note").innerHTML = hexagram["note"]
+    if ( hexagram["sequence"] ) {
+        document.querySelector("#sequence").innerHTML = hexagram["sequence"]
+        document.querySelector("#sequence_title").innerHTML = "Sequence"
+    } else {
+        document.querySelector("#sequence").parentElement.style.display = "none"
+    }
+    if ( hexagram["note"] ) {
+        document.querySelector("#note").innerHTML = hexagram["note"]
+    }
     document.querySelector("#judge_poem").innerHTML = hexagram["judgement_poem"]
     document.querySelector("#judge").innerHTML = hexagram["judgement"]
     document.querySelector("#judge_title").innerHTML = "The Judgement"
